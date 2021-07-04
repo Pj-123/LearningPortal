@@ -1,41 +1,29 @@
-import React from 'react';
-import Back from "./background";
-import Newlay from "./Newpage";
+import React,{useState} from 'react';
+
+const App=()=>{
+    const newcolor="yellow";
+    const [oldcolor,updatedcolor]=useState(newcolor);
+    const [name,updatedname]=useState("pratik jha");
+    const bgchange=()=>{
+        console.log("clicked");
+        let newbg="red";
+        updatedcolor(newbg);
+        let newname="web developer";
+        updatedname(newname);
+    }
+    const bgdouble=()=>{
+        updatedcolor("yellow");
+        updatedname("pratik jha");
 
 
+    }
+    return (
+        <>
+        <div style={{backgroundColor:oldcolor}}>
+            <button onClick={bgchange} onDoubleClick={bgdouble}>{name}</button>
+        </div>
 
-
-
-
-let curDate=new Date();
-curDate=curDate.getHours();
-let greetings="";
-const styleCss={};
-if(curDate>1&&curDate<12){
-  greetings="Good Morning";
-  styleCss.color="yellow";
-  
+        </>
+    )
 }
-else if(curDate>=12&&curDate<=18)
-{
-greetings="good afternoon";
-styleCss.color="orange";
-
-}
-else{
-  greetings="good night";
-  styleCss.color="blue";
-  
-}
-
-function App(){
-return(
-<>
-  <h1>Hello Sir,<span style={styleCss}>{greetings}</span></h1>
-  <Back></Back>
-  <Newlay></Newlay>
- </>
-);}
 export default App;
-
-
