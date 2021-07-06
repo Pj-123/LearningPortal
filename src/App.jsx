@@ -1,29 +1,27 @@
-import React,{useState} from 'react';
+import React from 'react';
+import Home from './Home';
+import About from './About';
+import Contact from './Contact';
+import Service from './Service';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Navbar from "./Navbar"
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
-const App=()=>{
-    const newcolor="yellow";
-    const [oldcolor,updatedcolor]=useState(newcolor);
-    const [name,updatedname]=useState("pratik jha");
-    const bgchange=()=>{
-        console.log("clicked");
-        let newbg="red";
-        updatedcolor(newbg);
-        let newname="web developer";
-        updatedname(newname);
-    }
-    const bgdouble=()=>{
-        updatedcolor("yellow");
-        updatedname("pratik jha");
-
-
-    }
-    return (
+import { Switch,Route,Redirect } from 'react-router-dom';
+const App=()=>
+{
+    return(
         <>
-        <div style={{backgroundColor:oldcolor}}>
-            <button onClick={bgchange} onDoubleClick={bgdouble}>{name}</button>
-        </div>
-
+        <Navbar/>
+        <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/about" component={About}/>
+            <Route exact path="/service" component={Service}/>
+            <Route exact path="/contact" component={Contact}/>
+            <Redirect to="/"/>
+        </Switch>
         </>
-    )
-}
+
+    );
+};
 export default App;
